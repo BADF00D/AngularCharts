@@ -1,12 +1,13 @@
 <div>
   <span class="axis" id="vAxis">Count</span>
   <svg id="chart" width="400" height="200">
-    <line *ngFor="let bar of bars" [attr.x1]="bar.postion*5+2" [attr.x2]="bar.postion*5+2" y2="0" y1="200" (mouseenter)="setCurrent(bar)"
-      [attr.stroke-dasharray]="getDashArray(bar)" (mouseleave)="clearCurrent()"/>
-    <line *ngFor="let bar of bars" [attr.x1]="bar.postion*5+2" [attr.x2]="bar.postion*5+2" y2="0" y1="200" (mouseenter)="setCurrent(bar)"
-      [attr.stroke-dasharray]="getDashArrayForBackground(bar)" [attr.stroke-dashoffset]="getStrokeOffsetForBackground(bar)" (mouseleave)="clearCurrent()" 
-      class="backgroundBar"/>
-      
+    <g *ngFor="let bar of bars" (mouseleave)="clearCurrent()" (mouseenter)="setCurrent(bar)" class="region">
+        <line [attr.x1]="bar.postion*5+2" [attr.x2]="bar.postion*5+2" y2="0" y1="200" 
+        [attr.stroke-dasharray]="getDashArray(bar)"/>
+      <line [attr.x1]="bar.postion*5+2" [attr.x2]="bar.postion*5+2" y2="0" y1="200" 
+        [attr.stroke-dasharray]="getDashArrayForBackground(bar)" [attr.stroke-dashoffset]="getStrokeOffsetForBackground(bar)"  
+        class="backgroundBar"/>
+    </g>
   </svg>
   <div class="hAxis axis">
     Number of Lines per Methode {{currentBar?.postion}}x {{currentBar?.count}}

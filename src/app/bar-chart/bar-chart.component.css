@@ -37,9 +37,9 @@ svg line:hover{
 }
 
 svg line.backgroundBar {
-  opacity: 0.01;
-}
-svg line.backgroundBar:hover {
-  stroke: red;
+  opacity: 0.00;
 }
 
+.region:hover *{
+  stroke: red;
+}
