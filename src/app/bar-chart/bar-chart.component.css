@@ -1,0 +1,45 @@
+
+.transparent {
+  stroke: black;
+}
+svg line {
+  stroke-width: 4px;
+  stroke: gray;
+  transform-origin: bottom right;
+  animation: expandChart .5s ;
+}
+svg line:hover{
+  stroke: firebrick;
+}
+
+@keyframes expandChart {
+  0% {
+      transform: scale(1,0)
+  }
+  100% {
+      transform: scale(1,1)
+  }
+}
+
+.axis {
+  font-size: .8em;
+}
+
+.hAxis {
+  width: 400px;
+  text-align: center;
+}
+#vAxis {
+  transform: rotate(270deg);
+  transform-origin: left top 0;
+  display:inline-block;
+  width: 1em;
+}
+
+svg line.backgroundBar {
+  opacity: 0.01;
+}
+svg line.backgroundBar:hover {
+  stroke: red;
+}
+
