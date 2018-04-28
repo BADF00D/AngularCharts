@@ -1,5 +1,10 @@
-<svg id="dashing" width="150" height="155">
-  <path *ngFor="let segment of segments" [attr.d]="calculatePath(segment)" [attr.fill]="segment.color"/>
+<svg id="dashing" width="100" height="100">
+  <path *ngFor="let segment of segments"
+  [attr.d]="calculatePath(segment)" [attr.fill]="segment.color"
+  [attr.transform]="calculateRotation(segment)"
+
+   />
+   <!-- transform="rotate(45)" -->
   <!-- <path d="M0,50a50,50 0 1,1 100,0" transform="translate(25 25)" stroke-dasharray="78.5 50" -->
   <!-- /> -->
   <!-- <path d="M0,50 a50,50 0 1,1 100,0" transform="translate(25 25)" class="alarm" stroke-dasharray="39.25 78.5" stroke-dashoffset="-78.5" > -->
@@ -51,4 +56,16 @@
            l 0 -45 Z" fill="blue" />
 
 
+</svg> -->
+<!-- <svg xmlns="http://www.w3.org/2000/svg" width="320" height="320">
+  <path d="M10 315
+           L 110 215
+           A 36 60 0 0 1 150.71 170.29
+           L 172.55 152.45
+           A 30 50 -45 0 1 215.1 109.9
+           L 315 10" stroke="black" fill="green" stroke-width="2" fill-opacity="0.5"/>
+  <circle cx="150.71" cy="170.29" r="2" fill="red"/>
+  <circle cx="110" cy="215" r="2" fill="red"/>
+  <ellipse cx="144.931" cy="229.512" rx="36" ry="60" fill="transparent" stroke="blue"/>
+  <ellipse cx="115.779" cy="155.778" rx="36" ry="60" fill="transparent" stroke="blue"/>
 </svg> -->

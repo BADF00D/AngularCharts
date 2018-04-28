@@ -1,6 +1,5 @@
-
-svg {
-  background-color: peachpuff;
+svg path {
+  transform-origin: 50% 50%;
 }
 
 #dashing path:hover {

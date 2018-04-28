@@ -6,33 +6,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pie-chart.component.css']
 })
 export class PieChartComponent implements OnInit {
-
   segments: Segment[] = [];
   constructor() {
-    this.segments.push(new Segment(.78, 'green'));
-    this.segments.push(new Segment(.19, 'yellow'));
-    this.segments.push(new Segment(.03, 'red'));
+    this.segments.push(Segment.Create(0.78, 'green'));
+    this.segments.push(Segment.Create(0.19, 'yellow'));
+    this.segments.push(Segment.Create(0.03, 'red'));
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   calculatePath(segment: Segment): string {
-    
-    if (segment.percent <= .5) {
-      const rotation = 0;
+    if (segment.percent <= 0.5) {
       const radian = 2 * Math.PI * segment.percent;
       const x = Math.cos(radian) * 45;
       const y = Math.sin(radian) * 45;
-      return `M 5 100 a 45 45 ${rotation} 0 1 ${45 - x} ${-y} l ${x} ${y} Z`;
+      return `M 5 50 a 45 45 0 0 1 ${45 - x} ${-y} l ${x} ${y} Z`;
     } else {
-      const rotation = 0;
       const radian = 2 * Math.PI * segment.percent;
       const x = Math.cos(radian) * 45;
       const y = Math.sin(radian) * 45;
-      return `M 5 100 a 45 45 ${rotation} 1 1 ${45 - x} ${-y} l ${x} ${y} Z`;
+      return `M 5 50 a 45 45 0 1 1 ${45 - x} ${-y} l ${x} ${y} Z`;
     }
+  }
+  calculateRotation(segment: Segment): string {
+    let percent = 0;
+    for (let i = 0; i < this.segments.length; i++) {
+      if (this.segments[i].id === segment.id) {
+        break;
+      }
+      percent += this.segments[i].percent;
+    }
+    const rotation = percent * 360;
+
+    return `rotate(${rotation})`;
   }
 }
 
@@ -41,5 +47,9 @@ export class Segment {
   public static Create(percent: number, color: string): Segment {
     return new Segment(percent, color, this._counter++);
   }
-  private constructor(public percent: number, public color: string, public id: number) { }
+  private constructor(
+    public percent: number,
+    public color: string,
+    public id: number
+  ) {}
 }
