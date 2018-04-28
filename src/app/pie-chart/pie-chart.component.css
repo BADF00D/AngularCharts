@@ -1,0 +1,9 @@
+
+svg {
+  background-color: peachpuff;
+}
+
+#dashing path:hover {
+  stroke: black;
+  stroke-width: 1px;
+}
