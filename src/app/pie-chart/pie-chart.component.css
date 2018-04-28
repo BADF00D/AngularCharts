@@ -2,6 +2,10 @@ svg path {
   transform-origin: 50% 50%;
   opacity: .75;
 }
+svg circle{
+  stroke: gray;
+  stroke-width: 1px;
+}
 #container{
   position: relative;
 }
