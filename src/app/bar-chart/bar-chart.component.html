@@ -1,15 +1,18 @@
-<div>
-  <span class="axis" id="vAxis">Count</span>
-  <svg id="chart" width="400" height="200">
-    <g *ngFor="let bar of bars" (mouseleave)="clearCurrent()" (mouseenter)="setCurrent(bar)" class="region">
-        <line [attr.x1]="bar.postion*5+2" [attr.x2]="bar.postion*5+2" y2="0" y1="200" 
-        [attr.stroke-dasharray]="getDashArray(bar)"/>
-      <line [attr.x1]="bar.postion*5+2" [attr.x2]="bar.postion*5+2" y2="0" y1="200" 
-        [attr.stroke-dasharray]="getDashArrayForBackground(bar)" [attr.stroke-dashoffset]="getStrokeOffsetForBackground(bar)"  
-        class="backgroundBar"/>
-    </g>
-  </svg>
-  <div class="hAxis axis">
-    Number of Lines per Methode {{currentBar?.postion}}x {{currentBar?.count}}
-  </div>
-</div>
+<svg id="chart" width="440" height="220">
+  <defs>
+    <marker id="arrow" markerWidth="6" markerHeight="4" refX="0" refY="2" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,4 L6,2 z"/>
+    </marker>
+  </defs>
+  <g *ngFor="let bar of bars" (mouseleave)="clearCurrent()" (mouseenter)="setCurrent(bar)" class="region">
+    <line [attr.x1]="bar.postion*5+22" [attr.x2]="bar.postion*5+22" y2="0" y1="200"
+      [attr.stroke-dasharray]="getDashArray(bar)"/>
+    <line [attr.x1]="bar.postion*5+22" [attr.x2]="bar.postion*5+22" y2="0" y1="200"
+      [attr.stroke-dasharray]="getDashArrayForBackground(bar)" [attr.stroke-dashoffset]="getStrokeOffsetForBackground(bar)"
+      class="backgroundBar"/>
+  </g>
+  <line class="legend" x1="0" y1="200" x2="428" y2="200" stroke="#000" marker-end="url(#arrow)" />
+  <line class="legend" x1="15" y1="220" x2="15" y2="10" stroke="#000" marker-end="url(#arrow)" />
+  <text x="25" y="213">Number of Lines per Methode {{currentBar?.postion}}x {{currentBar?.count}}</text>
+  <text x="11" y="190" transform="rotate(270 11 190)" transform-origin="50% 50%">Count</text>
+</svg>

@@ -10,7 +10,7 @@ export class BarChartComponent implements OnInit {
   currentBar: Bar;
 
   constructor() {
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 80; i++) {
       this.bars.push(new Bar(i, Math.floor(Math.random() * 100)));
     }
   }
