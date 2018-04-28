@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-pie-chart',
-  templateUrl: './pie-chart.component.html',
-  styleUrls: ['./pie-chart.component.css']
+  selector: "app-pie-chart",
+  templateUrl: "./pie-chart.component.html",
+  styleUrls: ["./pie-chart.component.css"]
 })
 export class PieChartComponent implements OnInit {
   segments: Segment[] = [];
+  currentSegment: Segment;
   constructor() {
-    this.segments.push(Segment.Create(0.78, 'green'));
-    this.segments.push(Segment.Create(0.19, 'yellow'));
-    this.segments.push(Segment.Create(0.03, 'red'));
+    this.segments.push(Segment.Create(0.78, "green"));
+    this.segments.push(Segment.Create(0.19, "yellow"));
+    this.segments.push(Segment.Create(0.03, "red"));
   }
 
   ngOnInit() {}
@@ -39,6 +40,12 @@ export class PieChartComponent implements OnInit {
     const rotation = percent * 360;
 
     return `rotate(${rotation})`;
+  }
+  setCurrentSegment(segment: Segment): void {
+    this.currentSegment = segment;
+  }
+  clearCurrentSegment(): void {
+    this.currentSegment = undefined;
   }
 }
 

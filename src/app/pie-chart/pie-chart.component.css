@@ -1,8 +1,22 @@
 svg path {
   transform-origin: 50% 50%;
+  opacity: .75;
+}
+#container{
+  position: relative;
 }
 
 #dashing path:hover {
-  stroke: black;
+  opacity: 1;
+  stroke: gray;
   stroke-width: 1px;
+}
+svg text {
+  fill: black;
+  font-size: 10pt;
+  text-anchor: middle;
+}
+
+#label {
+  fill: white;
 }

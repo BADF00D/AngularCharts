@@ -1,4 +1,7 @@
 <svg id="dashing" width="100" height="100">
   <path *ngFor="let segment of segments" [attr.d]="calculatePath(segment)" [attr.fill]="segment.color" [attr.transform]="calculateRotation(segment)"
+  (mouseenter)="setCurrentSegment(segment)" (mouseleave)="clearCurrentSegment()"
   />
+  <circle cx="50" cy="50" r="10" id="label"/>
+  <text x="50" y="55">{{currentSegment?.percent*100}}</text>
 </svg>
